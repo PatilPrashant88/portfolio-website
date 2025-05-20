@@ -199,6 +199,24 @@
         text-align: center;
         margin-top: 10px;
       }
+      .project-description {
+        display: none;
+        margin-top: 10px;
+        color: #555;
+      }
+
+      .project-card {
+        border: 1px solid #ccc;
+        padding: 15px;
+        margin-bottom: 15px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .project-card:hover {
+        background-color: #f9f9f9;
+      }
     </style>
   </head>
   <body>
@@ -281,13 +299,19 @@
 
     <section class="container py-5" id="projects" data-aos="fade-up">
       <h2 class="section-title">Projects</h2>
-      <div class="row">
-        <div class="col-md-6 mb-4">
-          <div class="card card-custom p-3">
-            <h5>Portfolio</h5>
-            <p>I created a fully responsive and modern portfolio website using HTML, CSS, and JavaScript. It includes sections like About, Skills, Projects, and Contact, with features like dark mode, scroll animations (AOS), and typing effects (Typed.js). The contact form is connected to a Node.js (Express) backend hosted on Render, which sends emails and displays live status using toasts. I deployed the frontend using GitHub Pages, making the entire website live and accessible to all users on any device. This project showcases my full-stack development skills and attention to UI/UX design.</p>
-          </div>
-        </div>
+      <div class="project-card" onclick="toggleDescription(this)">
+        <h3>Portfolio</h3>
+        <p>
+          I created a fully responsive and modern portfolio website using HTML,
+          CSS, and JavaScript. It includes sections like About, Skills,
+          Projects, and Contact, with features like dark mode, scroll animations
+          (AOS), and typing effects (Typed.js). The contact form is connected to
+          a Node.js (Express) backend hosted on Render, which sends emails and
+          displays live status using toasts. I deployed the frontend using
+          GitHub Pages, making the entire website live and accessible to all
+          users on any device. This project showcases my full-stack development
+          skills and attention to UI/UX design.
+        </p>
       </div>
     </section>
 
@@ -364,7 +388,10 @@
     <div class="toast bg-success text-white" id="toast">
       <div class="toast-body">Message sent successfully!</div>
     </div>
-    <div id="loading" style="display: none; color: #555; font-weight: bold; margin-top: 10px">
+    <div
+      id="loading"
+      style="display: none; color: #555; font-weight: bold; margin-top: 10px"
+    >
       Message sending...
     </div>
 
@@ -517,6 +544,11 @@
             setTimeout(() => (toast.style.display = "none"), 3000);
           }
         });
+      function toggleDescription(card) {
+        const desc = card.querySelector(".project-description");
+        const isVisible = desc.style.display === "block";
+        desc.style.display = isVisible ? "none" : "block";
+      }
     </script>
   </body>
 </html>
